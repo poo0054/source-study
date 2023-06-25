@@ -24,6 +24,7 @@
     <modules>
         <module>security-study</module>
         <module>rest-template</module>
+        <module>spring-batch</module>
 
     </modules>
 
