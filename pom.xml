@@ -16,12 +16,15 @@
         <java.version>1.8</java.version>
         <spring-boot.version>2.7.13</spring-boot.version>
         <mybatis-spring-boot.version>2.3.1</mybatis-spring-boot.version>
+        <fastjson.version>2.0.34</fastjson.version>
     </properties>
 
     <packaging>pom</packaging>
 
     <modules>
         <module>security-study</module>
+        <module>rest-template</module>
+
     </modules>
 
     <dependencyManagement>
@@ -40,6 +43,19 @@
                 <version>${mybatis-spring-boot.version}</version>
             </dependency>
 
+            <!-- JSON 解析器和生成器 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2-extension-spring5 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2-extension-spring5</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
