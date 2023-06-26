@@ -1,10 +1,13 @@
 package org.github.poo0054.config;
 
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.step.tasklet.TaskletStep;
 import org.springframework.batch.item.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -30,16 +33,33 @@ public class BatchConfig {
 
     @Bean
     public Job footballjob() {
-        return jobBuilders.get("test").start(step()).build();
+        return jobBuilders.get("test-job")
+                .listener(new JobExecutionListener() {
+                    @Override
+                    public void beforeJob(JobExecution jobExecution) {
+                        System.out.println("我是beforeJob--" + jobExecution.toString());
+                    }
+
+                    @Override
+                    public void afterJob(JobExecution jobExecution) {
+                        System.out.println("我是--afterJob" + jobExecution.toString());
+                    }
+                })
+                .start(step())
+                .build();
     }
 
     @Bean
     public Step step() {
-        return stepBuilders.get("test-stop")
+        TaskletStep taskletStep = stepBuilders.get("test-step")
                 .<Integer, Integer>chunk(2)
                 .reader(itemReader())
                 .writer(itemWriter())
+                .startLimit(2)
                 .build();
+
+        taskletStep.setAllowStartIfComplete(true);
+        return taskletStep;
     }
 
 
