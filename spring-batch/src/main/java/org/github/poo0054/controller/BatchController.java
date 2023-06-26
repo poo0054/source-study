@@ -25,9 +25,8 @@ public class BatchController {
     Job footballjob;
 
 
-    @GetMapping("/getBatch")
+    @GetMapping("/batch")
     public String getBatch() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
-        // 6. 创建参数
         JobParameters jobParameters = new JobParametersBuilder().toJobParameters();
         jobLauncher.run(footballjob, jobParameters);
         return "batch";

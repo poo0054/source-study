@@ -5,7 +5,6 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
-import org.springframework.batch.core.step.tasklet.TaskletStep;
 import org.springframework.batch.item.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -36,12 +35,11 @@ public class BatchConfig {
 
     @Bean
     public Step step() {
-        TaskletStep build = stepBuilders.get("test-stop")
+        return stepBuilders.get("test-stop")
                 .<Integer, Integer>chunk(2)
                 .reader(itemReader())
                 .writer(itemWriter())
                 .build();
-        return build;
     }
 
 
@@ -71,5 +69,4 @@ public class BatchConfig {
         };
 
     }
-
 }
