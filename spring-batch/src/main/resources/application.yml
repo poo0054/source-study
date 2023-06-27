@@ -2,6 +2,15 @@ server:
   port: 8088
 spring:
   batch:
-
     job:
       enabled: false
+    jdbc:
+      initialize-schema: always
+  datasource:
+    url: jdbc:mysql://192.168.56.10:3306/batch
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+
