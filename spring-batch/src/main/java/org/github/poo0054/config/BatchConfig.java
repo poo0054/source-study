@@ -1,9 +1,6 @@
 package org.github.poo0054.config;
 
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobExecution;
-import org.springframework.batch.core.JobExecutionListener;
-import org.springframework.batch.core.Step;
+import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -37,12 +34,12 @@ public class BatchConfig {
                 .listener(new JobExecutionListener() {
                     @Override
                     public void beforeJob(JobExecution jobExecution) {
-                        System.out.println("我是beforeJob--" + jobExecution.toString());
+                        System.out.println("Job-我是beforeJob--" + jobExecution.toString());
                     }
 
                     @Override
                     public void afterJob(JobExecution jobExecution) {
-                        System.out.println("我是--afterJob" + jobExecution.toString());
+                        System.out.println("Job-我是--afterJob" + jobExecution.toString());
                     }
                 })
                 .start(step())
@@ -55,7 +52,19 @@ public class BatchConfig {
                 .<Integer, Integer>chunk(2)
                 .reader(itemReader())
                 .writer(itemWriter())
-                .startLimit(2)
+                .listener(new StepExecutionListener() {
+                    @Override
+                    public void beforeStep(StepExecution stepExecution) {
+                        System.out.println("step-我是beforeJob--" + stepExecution);
+                    }
+
+                    @Override
+                    public ExitStatus afterStep(StepExecution stepExecution) {
+                        System.out.println("step-我是beforeJob--" + stepExecution);
+                        return stepExecution.getExitStatus();
+                    }
+                })
+//                .startLimit(2)
                 .build();
 
         taskletStep.setAllowStartIfComplete(true);
