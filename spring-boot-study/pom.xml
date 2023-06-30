@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.github.poo0054</groupId>
+        <artifactId>study</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>spring-boot-study</artifactId>
+
+    <description>spring-boot源码学习</description>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>spring-security</module>
+        <module>spring-resttemplate</module>
+        <module>spring-data</module>
+        <module>spring-web</module>
+        <module>spring-batch</module>
+    </modules>
+
+</project>
