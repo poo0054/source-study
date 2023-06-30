@@ -5,7 +5,7 @@
 
     <parent>
         <groupId>org.github.poo0054</groupId>
-        <artifactId>study</artifactId>
+        <artifactId>source-study</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>

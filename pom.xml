@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.github.poo0054</groupId>
-    <artifactId>study</artifactId>
+    <artifactId>source-study</artifactId>
     <version>${revision}</version>
 
     <description>框架底层学习</description>
