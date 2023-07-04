@@ -128,7 +128,7 @@ subscribe(Consumer<? super T> consumer,
                             sink.complete();
                         }
                     });*/
-        }, );
+        });
     }
 
 

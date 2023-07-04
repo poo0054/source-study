@@ -16,6 +16,7 @@
         <mybatis-spring-boot.version>2.3.1</mybatis-spring-boot.version>
         <fastjson.version>2.0.34</fastjson.version>
         <mysql.version>8.0.31</mysql.version>
+        <dynamic-datasource.version>3.5.2</dynamic-datasource.version>
     </properties>
 
     <packaging>pom</packaging>
@@ -60,6 +61,14 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
+
+            <!-- Dynamic DataSource -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-datasource.version}</version>
+
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -69,7 +78,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-
 
     </dependencies>
 
